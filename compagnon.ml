@@ -1,4 +1,6 @@
-#require "graphics"
+(*#require "graphics"*)
+open Graphics
+
 (* les couleurs des jetons                                 *)
 type couleur = Rouge | Jaune
 
