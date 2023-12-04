@@ -247,33 +247,33 @@ let rec ab_minmax (p: int) (e: etat) (j: couleur) ((a, b): int*int) =
 			else if heur <= (max_int/2) then a
 			else
 				begin
-				if b <= 0 then b
-				else if a >= 0 then a
-				else 0
+					if b <= 0 then b
+					else if a >= 0 then a
+					else 0
 				end
 		end
 	else
 		begin
 		if (p=0) then
 			let heur_e_j = (heuristique e j) in
-			if heur_e_j >= b then b else
-			if heur_e_j <= a then a else
-			heur_e_j
+				if heur_e_j >= b then b else
+				if heur_e_j <= a then a else
+					heur_e_j
 		else if (j = e.joueur) then
 			begin
-			let v = ref a in
-			try
-			(List.iter (fun ele -> v := (max !v (ab_minmax (p-1) ele j (!v, b))); if !v>=b then raise (Return b)) nexte);
-			!v
-			with |Return(t) -> t
+				let v = ref a in
+				try
+					(List.iter (fun ele -> v := (max !v (ab_minmax (p-1) ele j (!v, b))); if !v>=b then raise (Return b)) nexte);
+					!v
+				with |Return(t) -> t
 			end
 		else
 			begin
-			let u = ref b in
-			try
-			(List.iter (fun ele -> u:= (min !u (ab_minmax (p-1) ele j (a, !u))); if !u<=a then raise (Return a)) nexte);
-			!u
-			with |Return(t) ->t
+				let u = ref b in
+				try
+					(List.iter (fun ele -> u:= (min !u (ab_minmax (p-1) ele j (a, !u))); if !u<=a then raise (Return a)) nexte);
+					!u
+				with |Return(t) ->t
 			end
 		end
 
@@ -318,7 +318,7 @@ let main () =
     Graphics.clear_graph ();
     draw_game e';
     (* l'ordinateur joue *)
-    let e'' = joue e' 7 in
+    let e'' = joue e' 5 in
     play_with_user e''
   in
   play_with_user init
