@@ -1,2 +1,2 @@
 # Puissance-4-IA
-Une IA qui joue bien au puissance 4
+Ce projet est une IA implémentant l'algorithme MIN-MAX Elagué en Ocaml
